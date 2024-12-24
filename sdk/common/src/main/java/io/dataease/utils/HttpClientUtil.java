@@ -66,8 +66,7 @@ public class HttpClientUtil {
                         .register("http", new PlainConnectionSocketFactory())
                         .register("https", socketFactory).build();
                 HttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager(registry);
-                CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(connManager).build();
-                return httpClient;
+                return HttpClients.custom().setConnectionManager(connManager).build();
             } else {
                 // http
                 return HttpClientBuilder.create().build();
@@ -362,41 +361,31 @@ public class HttpClientUtil {
     }
 
     public static byte[] downFromRemote(String url, HttpClientConfig config) {
-        HttpGet httpGet = new HttpGet(url);
-        CloseableHttpClient httpClient = buildHttpClient(url);
-
-        try {
+        try (CloseableHttpClient httpClient = buildHttpClient(url)) {
+            HttpGet httpGet = new HttpGet(url);
+            // 设置请求配置
             httpGet.setConfig(config.buildRequestConfig());
-            Map<String, String> header = config.getHeader();
-            Iterator var5 = header.keySet().iterator();
 
-            while (var5.hasNext()) {
-                String key = (String) var5.next();
-                httpGet.addHeader(key, (String) header.get(key));
-            }
-
+            // 设置请求头
+            config.getHeader().forEach(httpGet::addHeader);
             HttpResponse response = httpClient.execute(httpGet);
-            InputStream inputStream = response.getEntity().getContent();
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            byte[] buffer = new byte[1024];
 
-            int bytesRead;
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                outputStream.write(buffer, 0, bytesRead);
+            try (InputStream inputStream = response.getEntity().getContent();
+                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+
+                byte[] buffer = new byte[1024];
+                int bytesRead;
+
+                // 读取响应内容并写入输出流
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
+
+                return outputStream.toByteArray();
             }
-
-            byte[] var10 = outputStream.toByteArray();
-            return var10;
-        } catch (Exception var19) {
-            logger.error("HttpClient查询失败", var19);
-            throw new RuntimeException("HttpClient查询失败: " + var19.getMessage());
-        } finally {
-            try {
-                httpClient.close();
-            } catch (Exception var18) {
-                logger.error("HttpClient关闭连接失败", var18);
-            }
-
+        } catch (Exception e) {
+            logger.error("HttpClient查询失败", e);
+            throw new RuntimeException("HttpClient查询失败: " + e.getMessage(), e);
         }
     }
 

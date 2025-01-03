@@ -4,6 +4,8 @@ import { ElTable, ElPagination } from 'element-plus-secondary'
 import EmptyBackground from '@/components/empty-background/src/EmptyBackground.vue'
 import TableBody from './TableBody.vue'
 import { propTypes } from '@/utils/propTypes'
+import { useI18n } from '@/hooks/web/useI18n'
+const { t } = useI18n()
 const props = defineProps({
   columns: propTypes.arrayOf(propTypes.string),
   isSearch: propTypes.bool.def(false),
@@ -140,7 +142,7 @@ defineExpose({
       <template #empty>
         <empty-background
           v-if="props.showEmptyImg"
-          :description="props.emptyDesc ? props.emptyDesc : $t('data_set.no_data')"
+          :description="props.emptyDesc ? props.emptyDesc : t('data_set.no_data')"
           :img-type="imgType || 'noneWhite'"
         />
         <div v-else :style="{ width: '100%' }" />

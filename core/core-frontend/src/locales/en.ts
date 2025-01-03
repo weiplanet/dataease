@@ -2796,6 +2796,7 @@ Scatter chart (bubble) chart: {a} (series name), {b} (data name), {c} (value arr
     column_name: 'Field name'
   },
   visualization: {
+    multi_selected: '{0} components selected',
     number1: '1',
     number2: '2',
     number3: '3',

@@ -2728,6 +2728,7 @@ export default {
     column_name: '字段名称'
   },
   visualization: {
+    multi_selected: '已选{0}项',
     number1: '一',
     number2: '二',
     number3: '三',

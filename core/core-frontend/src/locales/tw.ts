@@ -2726,6 +2726,7 @@ export default {
     column_name: '欄位名稱'
   },
   visualization: {
+    multi_selected: '已選{0}項',
     number1: '一',
     number2: '二',
     number3: '三',

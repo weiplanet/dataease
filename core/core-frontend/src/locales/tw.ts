@@ -3857,7 +3857,9 @@ export default {
     connection_lost: '連線斷開',
     task_name: '任務名稱',
     es_params_label: '查詢參數',
-    es_params_tip: '請遵循 Elasitcsearch 的查詢語法'
+    es_params_tip: '請遵循 Elasitcsearch 的查詢語法',
+    dynamic_partition_enable: '動態分區',
+    time_end: '結束'
   },
   watermark: {
     support_params: '目前支援的參數：',

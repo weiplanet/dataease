@@ -3861,7 +3861,9 @@ export default {
     connection_lost: '连接断开',
     task_name: '任务名称',
     es_params_label: '查询参数',
-    es_params_tip: '请遵循 Elasitcsearch 的查询语法'
+    es_params_tip: '请遵循 Elasitcsearch 的查询语法',
+    dynamic_partition_enable: '动态分区',
+    time_end: '结束'
   },
   watermark: {
     support_params: '当前支持的参数：',

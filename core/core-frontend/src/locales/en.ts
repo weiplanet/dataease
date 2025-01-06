@@ -3964,7 +3964,9 @@ Scatter chart (bubble) chart: {a} (series name), {b} (data name), {c} (value arr
     connection_lost: 'Disconnected',
     task_name: 'Task name',
     es_params_label: 'Query Parameters',
-    es_params_tip: 'Please follow the Elasticsearch query syntax'
+    es_params_tip: 'Please follow the Elasticsearch query syntax',
+    dynamic_partition_enable: 'Dynamic Partitioning',
+    time_end: 'End'
   },
   watermark: {
     support_params: 'Currently supported parameters:',

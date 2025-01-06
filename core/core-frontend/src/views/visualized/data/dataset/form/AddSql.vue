@@ -226,7 +226,9 @@ const handleSearchVariableApi = async () => {
 }
 onMounted(async () => {
   dsChange(sqlNode.value.datasourceId)
-  await handleSearchVariableApi()
+  if (!desktop) {
+    await handleSearchVariableApi()
+  }
   sql = Base64.decode(sqlNode.value.sql)
   codeCom.value = myCm.value.codeComInit(setNameIdTrans('id', 'name', sql), true)
 })

@@ -3869,7 +3869,8 @@ export default {
     es_params_label: '查询参数',
     es_params_tip: '请遵循 Elasitcsearch 的查询语法',
     dynamic_partition_enable: '动态分区',
-    time_end: '结束'
+    time_end: '结束',
+    es_query_param_formatter_error: '查询参数格式错误，请输入正确的JSON格式，请检查'
   },
   watermark: {
     support_params: '当前支持的参数：',

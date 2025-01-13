@@ -3865,7 +3865,8 @@ export default {
     es_params_label: '查詢參數',
     es_params_tip: '請遵循 Elasitcsearch 的查詢語法',
     dynamic_partition_enable: '動態分區',
-    time_end: '結束'
+    time_end: '結束',
+    es_query_param_formatter_error: '查詢參數格式錯誤，請輸入正確的JSON格式，請檢查'
   },
   watermark: {
     support_params: '目前支援的參數：',

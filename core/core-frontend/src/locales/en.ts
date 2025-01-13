@@ -3972,7 +3972,9 @@ Scatter chart (bubble) chart: {a} (series name), {b} (data name), {c} (value arr
     es_params_label: 'Query Parameters',
     es_params_tip: 'Please follow the Elasticsearch query syntax',
     dynamic_partition_enable: 'Dynamic Partitioning',
-    time_end: 'End'
+    time_end: 'End',
+    es_query_param_formatter_error:
+      'Query parameter format error, please enter the correct JSON format, please check'
   },
   watermark: {
     support_params: 'Currently supported parameters:',
